@@ -1,8 +1,8 @@
 # Deployment specific
 
 export DEBUG=false
-export IMAGE_LIST="fluentd elasticsearch mailcatcher nginx rabbitmq redis community_api community_front communication-service"
-export REGISTRY_PREFIX="localhost:5000/community"
+export IMAGE_LIST="keycloak nginx"
+export REGISTRY_PREFIX="localhost:5000/fidor"
 export RELEASE_NAME="1.0.1"
 
 # {DYNAMIC_CONTENT}
