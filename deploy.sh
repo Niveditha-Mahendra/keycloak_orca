@@ -93,7 +93,7 @@ then
 
   node=$(docker node ls | head -n2 | tail -n1 | awk '{ print $3 }')
 
-  apps=(ngix keycloak)
+  apps=(nginx keycloak)
 
   for app in ${apps[@]}
   do
@@ -119,6 +119,6 @@ fi
 
 
   echo "Deploying NGINX..."
-  docker stack deploy -c application_stack/docker-stack-ngix.yml fidor-ngix
+  docker stack deploy -c application_stack/docker-stack-nginx.yml fidor-nginx
 
 echo "Deployment complete"

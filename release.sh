@@ -38,8 +38,8 @@ mkdir delivery/images
 
 # Pull and save docker images
 
-docker pull dockerhub.fidorfzco.com:5000/community/nginx:master
-docker save dockerhub.fidorfzco.com:5000/community/nginx:master | gzip > delivery/images/nginx.tar.gz
+docker pull nginx:latest
+docker save nginx:latest | gzip > delivery/images/nginx.tar.gz
 
 docker pull jboss/keycloak:5.0.0
 docker save jboss/keycloak:5.0.0 | gzip > delivery/images/keycloak.tar.gz
