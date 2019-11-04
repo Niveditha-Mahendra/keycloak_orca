@@ -50,7 +50,7 @@ then
  
 
 else
-  registerParam "NGINX_DOCKER_IMAGE"                    "dockerhub.fidorfzco.com:5000/fidor/nginx:latest"
+  registerParam "NGINX_DOCKER_IMAGE"                    "nginx:latest"
   registerParam "KEYCLOAK_DOCKER_IMAGE"                 "jboss/keycloak:5.0.0"
 fi
 
