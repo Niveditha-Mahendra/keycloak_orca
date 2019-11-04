@@ -1,0 +1,29 @@
+version: '3'
+
+networks:
+  fidor:
+    external: true
+
+services:
+  keycloak:
+    image: ${KEYCLOAK_DOCKER_IMAGE}
+    environment:
+      DB_VENDOR: ${DB_VENDOR}
+      DB_ADDR: ${DB_ADDR}
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_SCHEMA: public
+      KEYCLOAK_USER: ${KEYCLOAK_USER}
+      KEYCLOAK_PASSWORD: ${KEYCLOAK_PASSWORD}
+    command: ["-Djboss.http.port=8181"]
+    ports:
+      - '${KEYCLOAK_PORT}:8181'
+    depends_on:
+      - mysql
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - fidor

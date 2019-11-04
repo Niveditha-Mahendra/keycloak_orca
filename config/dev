@@ -1,0 +1,48 @@
+export DOMAIN=xxx.abc.com
+
+#Keycloak
+
+export DB_VENDOR=mysql
+
+export DB_ADDR=
+
+export DB_DATABASE=keycloak
+
+export DB_USER=root
+
+export DB_PASSWORD=dummy
+
+export DB_SCHEMA=public
+
+export KEYCLOAK_USER=admin
+
+export KEYCLOAK_PASSWORD=keyCloak_654
+
+export KEYCLOAK_PORT=8181
+
+#Docker Volume path
+
+export NGINX_VOLUME="/mnt/nfs/community-dev/nginx"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

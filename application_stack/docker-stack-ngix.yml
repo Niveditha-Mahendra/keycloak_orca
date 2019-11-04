@@ -1,0 +1,30 @@
+version: '3'
+
+networks:
+  fidor:
+    external: true
+
+services:
+
+  # --- NGINX ---
+
+  nginx:
+    image: ${NGINX_DOCKER_IMAGE}
+    ports:
+      - '80:80'
+      - '443:443'
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 3s
+    logging: &logging_config
+      driver: fluentd
+      options:
+        tag: ngix
+    volumes:
+    - ${NGINX_VOLUME}/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - fidor
