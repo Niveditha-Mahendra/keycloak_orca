@@ -12,15 +12,12 @@ services:
     image: ${NGINX_DOCKER_IMAGE}
     ports:
       - '80:80'
-      - '443:443'
-    deploy:
-      placement:
-        constraints: [node.role == manager]
-      replicas: 1
-      update_config:
-        parallelism: 1
-        delay: 3s
+      - "443:443"
+    environment:
+      - NGINX_HOST=${DOMAIN}
     volumes:
-    - ${NGINX_VOLUME}/default.conf:/etc/nginx/conf.d/default.conf
+      - ${NGINX_VOLUME}/default.conf:/etc/nginx/conf.d/default.conf
+    deploy:
+      replicas: 1
     networks:
       - fidor

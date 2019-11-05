@@ -44,7 +44,7 @@ function registerParam {
 
 if [[ "$1" == "package" ]];
 then
-  registerParam "NGINX_DOCKER_IMAGE"                   "${REGISTRY_PREFIX}/ngix:${RELEASE_NAME}"
+  registerParam "NGINX_DOCKER_IMAGE"                   "${REGISTRY_PREFIX}/nginx:${RELEASE_NAME}"
   registerParam "KEYCLOAK_DOCKER_IMAGE"                "${REGISTRY_PREFIX}/keycloak:${RELEASE_NAME}"
   
  
@@ -112,13 +112,12 @@ fi
 
   cp -a ../nginx/default.conf ${NGINX_VOLUME}/
 
-
+  echo "Deploying NGINX..."
+  docker stack deploy -c application_stack/docker-stack-nginx.yml fidor-nginx
 
   echo "Deploying Keycloak..."
   docker stack deploy -c application_stack/docker-stack-keycloak.yml fidor-keycloak
 
 
-  echo "Deploying NGINX..."
-  docker stack deploy -c application_stack/docker-stack-nginx.yml fidor-nginx
 
 echo "Deployment complete"
